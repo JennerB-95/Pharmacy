@@ -1,0 +1,73 @@
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
+      <ul class="navbar-nav mr-lg-2 d-none d-lg-flex">
+        <li class="nav-item nav-toggler-item">
+          <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </li>
+        <li class="nav-item nav-search d-none d-lg-flex">
+          <!-- <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="search">
+                <i class="mdi mdi-magnify"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control" placeholder="search" aria-label="search" aria-describedby="search">
+          </div> -->
+        </li>
+      </ul>
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <!-- <a class=" brand-logo" href="#"><img height="70px" src="../../../static/img/logotipe.svg"/></a> -->
+        <!-- <a class="navbar-brand brand-logo-mini" href="#"><img src="../../images/logo-mini.svg" alt="logo"/></a> -->
+      </div>
+      <ul class="navbar-nav navbar-nav-right">
+        {% if request.user.groups.all %}
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link{% if request.user.groups.all.count > 1 %} dropdown-toggle {% endif %}" href="#" data-toggle="dropdown" id="profileDropdown" aria-expanded="false">
+              {{request.session.group}}
+            </a>
+            {% if request.user.groups.all.count > 1 %}
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+        
+              {% for g in request.user.groups.all %}
+                {% if g.id != request.session.group.id %}
+                  <a class="dropdown-item" href="{% url 'user:user_change_group' g.id %}">
+                    <i class="mdi mdi-settings text-primary"></i>
+                    {{ g.name }}
+                  </a>
+                  <div class="dropdown-divider"></div>
+                {% endif %}
+              {% endfor %}
+              </div>
+            {% endif %}
+          </li>
+        {% endif %}
+
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="{{request.user.get_image}}" />
+                <span class="nav-profile-name">{{request.user}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="{% url 'user:user_profile' %}">
+                <img src="../../../static/img/perfil.png" />
+                <!-- <i class="mdi mdi-edit text-primary"></i> -->
+                Editar perfil
+              </a>
+              <a class="dropdown-item" href="{% url 'user:user_change_password' %}">
+                <img src="../../../static/img/pass.png" />
+                <!-- <i class="mdi mdi-logout text-primary"></i> -->
+                Editar contraseña
+              </a>
+              <a class="dropdown-item" href="{% url 'logout' %}">
+                <img src="../../../static/img/logout.png" />
+                <!-- <i class="mdi mdi-logout text-primary"></i> -->
+                Logout
+              </a>
+            </div>
+          </li>
+
+        </ul>
+    </div>
+  </nav>

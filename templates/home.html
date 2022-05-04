@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="icon" href="{% static 'img/pestania.png' %}" type="image/png"/>
+    <title>{{ title }}</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static 'lib/adminlte-3.0.4/plugins/font-awesome-5.11.1/css/all.min.css' %}">
+    <!-- Theme style -->
+    <!-- <link rel="stylesheet" href="{% static 'lib/adminlte-3.0.4/css/adminlte.min.css' %}"> -->
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'global/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/addons.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/my_styles.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'global/css/bootstrap-table.min.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/jquery-confirm.min.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'global/css/all.min.css' %}"> -->
+
+    <!-- jQuery -->
+    <script src="{% static 'lib/adminlte-3.0.4/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'lib/adminlte-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'lib/adminlte-3.0.4/js/adminlte.min.js' %}"></script>
+    <!-- Sweetalert2 -->
+    <script src="{% static 'lib/sweetalert2-9.10.0/sweetalert2.all.min.js' %}"></script>
+    <!-- Jquery Confirm -->
+    <link rel="stylesheet" href="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.css' %}">
+    <script src="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.js' %}"></script>
+    <!-- My css -->
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <!-- Functions -->
+    <script src="{% static 'js/functions.js' %}"></script>
+
+
+
+
+
+    <!-- <script src="{% static 'global/js/base.js' %}"></script> -->
+    <!-- <script src="{% static 'global/js/addons.js' %}"></script> -->
+    <script src="{% static 'global/plugins/js/axios.min.js' %}"></script>
+    <script src="{% static 'global/js/http.js' %}"></script>
+    <script src="{% static 'global/js/helpers.js' %}"></script>
+    <script src="{% static 'global/js/scripts.js' %}"></script>
+    <script src="{% static 'global/js/bootstrap-table.min.js' %}"></script>
+    <script src="{% static 'global/js/bootstrap-table-locale-all.min.js' %}"></script>
+    <script src="{% static 'global/js/jquery-confirm.min.js' %}"></script>
+    <script src="{% static 'global/js/all.min.js' %}"></script>
+    <script src="{% static 'global/js/JsBarcode.all.min.js' %}"></script>
+
+    <script src="{% static 'global/plugins/js/off-canvas.js' %} "></script>
+    <script src="{% static 'global/plugins/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'global/plugins/js/template.js' %}"></script>
+    <script src="{% static 'global/plugins/js/settings.js' %}"></script>
+    <script src="{% static 'global/plugins/js/formpickers.js' %}"></script>
+    <script src="{% static 'global/plugins/js/toastDemo.js' %}"></script>
+    <script src="{% static 'global/plugins/js/alerts.js' %}"></script>
+    <script src="{% static 'global/plugins/js/tooltips.js' %}"></script>
+    <script src="{% static 'global/plugins/js/popover.js' %}"></script>
+    <script src="{% static 'global/plugins/js/chart.js' %}"></script>
+    <script src="{% static 'global/plugins/js/select2.js' %}"></script>
+     <!-- Block head -->
+     {% block style %}
+     {% endblock %}
+     {% block head %}
+
+    {% endblock %}
+</head>
+{% block body %}
+
+{% endblock %}
+</html>

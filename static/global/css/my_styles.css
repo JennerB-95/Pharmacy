@@ -1,0 +1,13 @@
+.table td, .jsgrid .jsgrid-table td {
+  padding: 8px 10px;
+}
+
+
+.error-label {
+  color: red;
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none;
+}

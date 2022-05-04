@@ -1,0 +1,222 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+{% block head %}
+    {% block head_form %}
+
+    {% endblock %}
+{% endblock %}
+{% block content %}
+    <form method="post" action="." enctype="multipart/form-data">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h5 class="m-0 font-weight-bold text-primary">
+                    {% if action == 'add' %}
+                        <i class="fas fa-plus"></i>
+                    {% else %}
+                        <i class="fas fa-edit"></i>
+                    {% endif %}
+
+                    {{ title }}
+                </h5>
+            </div>
+            <div class="card-body">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="{{ action }}">
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-ban"></i> Ha ocurrido un error al querer guardar el registro</h5>
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_barcode">Codigo de Barra</label>
+                        <div class="col-sm-12">
+                            {{ form.barcode|add_class:'form-control'|attr:'autocomplete:off' }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="id_cat">Categoria</label>
+                          <div class="col-sm-12">
+                               {{form.cat|add_class:'form-control'|attr:'autocomplete:off' }} 
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_name">Nombre</label>
+                        <div class="col-sm-12">
+                            {{ form.name|add_class:'form-control'|attr:'autocomplete:off' }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <input type="file" name="image" class="file-upload-default">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled="">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary" type="button">Subir</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="id_pvp">Precio Venta</label>
+                          <div class="col-sm-12">
+                               {{form.pvp|add_class:'form-control'|attr:'autocomplete:off' }} 
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="id_pvp">Precio Compra</label>
+                          <div class="col-sm-12">
+                               {{form.pvp_cmp|add_class:'form-control'|attr:'autocomplete:off' }} 
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="id_unit">Unidad de Medida</label>
+                          <div class="col-sm-12">
+                              {{ form.unit|add_class:'form-control'|attr:'autocomplete:off' }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="id_health_register">Registro Sanitario</label>
+                          <div class="col-sm-12">
+                               {{form.health_register|add_class:'form-control'|attr:'autocomplete:off' }} 
+                          </div>
+                        </div>
+                      </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="id_lab">Laboratorio</label>
+                          <div class="col-sm-12">
+                               {{form.lab|add_class:'form-control'|attr:'autocomplete:off'  }} 
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_due_date">Fecha de Vencimiento</label>
+                        <div class="col-sm-12">
+                          {{form.due_date|add_class:'form-control'|attr:'autocomplete:off' }} 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_component">Componente</label>
+                        <div class="col-sm-12">
+                             {{form.component|add_class:'form-control'|attr:'autocomplete:off' }} 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_lot">Ubicacion</label>
+                        <div class="col-sm-12">
+                            {{ form.lot|add_class:'form-control'|attr:'autocomplete:off' }}
+                        </div>
+                      </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_type_med">Tipo</label>
+                        <div class="col-sm-12">
+                             {{form.type_med |add_class:'form-control'|attr:'autocomplete:off'}} 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_indication">Indicacion</label>
+                        <div class="col-sm-12">
+                          {{form.indication |add_class:'form-control'|attr:'autocomplete:off'}} 
+
+                          <!-- <textarea id="id_indication" name="indication" class="form-control" maxlength="300" rows="5">{% if products %} {{products.indication}} {% endif %}</textarea> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="id_stock">Existencia</label>
+                          <div class="col-sm-12">
+                               {{form.stock|add_class:'form-control'|attr:'autocomplete:off' }} 
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="id_latest_buy">Ultima Compra</label>
+                        <div class="col-sm-12">
+                            {{ form.latest_buy|add_class:'form-control'|attr:'autocomplete:off' }}
+                        </div>
+                      </div>
+                    </div>                
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat">
+                    <i class="fas fa-save"></i> Guardar registro
+                </button>
+                <a href="{{ list_url }}" class="btn btn-danger btn-flat">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+    <script>
+        {% if form.errors %}
+            var errors = '';
+            {% for field in form %}
+                {% for error in field.errors %}
+                    errors += '{{ error }}\n';
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                errors += '{{ error }}\n';
+            {% endfor %}
+            Swal.fire({
+                title: 'Error!',
+                text: errors,
+                icon: 'error'
+            });
+        {% endif %}
+
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+            var parameters = new FormData(this);
+            submit_with_ajax(window.location.pathname, 'Notificación', '¿Estas seguro de realizar la siguiente acción?', parameters, function () {
+                location.href = '{{ list_url }}';
+            });
+        });
+    </script>
+{% endblock %}

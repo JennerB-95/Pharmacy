@@ -1,0 +1,262 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{% static 'img/pestania.png' %}" type="image/png"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <title>{% block title %}{{title}}{% endblock  %}</title>
+
+    <link rel="stylesheet" href="{% static 'global/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/addons.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/my_styles.css' %}">
+
+    <script src="{% static 'global/js/base.js' %}"></script>
+    <script src="{% static 'global/js/addons.js' %}"></script>
+    <script src="{% static 'global/plugins/js/axios.min.js' %}"></script>
+    <script src="{% static 'global/js/http.js' %}"></script>
+    <script src="{% static 'global/js/typed.min.js' %}"></script>
+   
+    
+    <!-- Sweetalert2 -->
+    <script src="{% static 'lib/sweetalert2-9.10.0/sweetalert2.all.min.js' %}"></script>
+    <!-- Jquery Confirm -->
+    <link rel="stylesheet" href="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.css' %}">
+    <script src="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.js' %}"></script>
+    <!-- Functions -->
+    <script src="{% static 'js/functions.js' %}"></script>
+
+ 
+    {% block head %}
+    <style>
+
+        #hero {
+            width: 100%;
+            height: 100vh;
+            background: url("/../static/global/images/home.gif") top center;
+            background-size: cover;
+        }
+
+        #hero:before {
+            content: "";
+            background: rgba(5, 13, 24, 0.3);
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        #hero .hero-container {
+            position: relative;
+            z-index: 2;
+            min-width: 300px;
+        }
+
+        #hero h1 {
+            margin: 0 0 0 0;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 56px;
+            color: #fff;
+        }
+
+        #hero p {
+            color: #fff;
+            margin-bottom: 50px;
+            font-size: 22px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #hero p span {
+            color: #fff;
+            padding-bottom: 4px;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #2F7762;
+        }
+
+        @media (min-width: 1024px) {
+            #hero {
+                background-attachment: fixed;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 28px;
+                line-height: 36px;
+            }
+            #hero h2 {
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 30px;
+            }
+        }
+
+        h1, h2 {
+            font-family: "Raleway", sans-serif;
+        }
+
+        .auth .login-half-bg {
+            background: url('/../static/img/home.gif') !important;
+            background-size: 100%;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            animation: movimiento 30s infinite linear alternate;
+        }
+        @keyframes movimiento{
+            from{
+                background-position: bottom left;
+            }to{
+                 background-position: top right;
+             }
+        }
+
+        .capa-gradient{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: -webkit-linear-gradient(left, #2F7762, #2F7762);
+            opacity: 0.5;
+        }
+
+
+
+    </style>
+
+    {% endblock  %}
+</head>
+
+<body>
+
+{% block content %}
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+            <div class="row flex-grow">
+
+                <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                    <div class="auth-form-transparent text-left p-3">
+                        <div class="text-center">
+                            <img width="300px" src="../../../static/img/logotipe.svg">
+                        </div>
+                        <h4 class="text-center">Reseteo de Contraseña</h4>
+                        <h6 class="text-center font-weight-light">Ingresa tus datos!</h6>
+
+
+                        <form method="POST" class="pt-3">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Usuario</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                                  </div>
+                                  {{form.username}}
+                                    <!-- <input type="text" class="form-control form-control-user form-control-lg border-left-0" id="id_username" name="username" aria-describedby="emailHelp" placeholder="Ingresa tu usuario"> -->
+                                </div>
+                            </div>
+        
+                            <div class="my-3">
+                                <button type="submit" name="login_form" class="btn btn-block btn-outline-primary btn-lg font-weight-medium auth-form-btn">ENVIAR</button>
+                            </div>
+                            <p class="text-center" style="font-size: 12px;">
+                                Iniciar Sesion, da click <a href="{% url 'login' %}">aqui</a>
+                            </p>                                    
+        
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <!-- <div class="col-lg-6 login-half-bg d-flex flex-row"> -->
+                <!-- <div class="col-lg-6 d-flex flex-row"> -->
+
+                <!-- <div class="capa-gradient"></div> -->
+
+                <section id="hero" class="col-lg-6 login-half-bg d-flex justify-content-center align-items-center">
+                    <div class="capa-gradient"></div>
+                    <div class="hero-container" data-aos="fade-in">
+                        <h1>All Safe Security & Technology</h1>
+                        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Designer Mobile"></span></p>
+                    </div>
+                </section>
+                <!-- </div> -->
+
+
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+
+
+{% endblock  %}
+
+
+
+
+
+
+
+{% block js %}
+<script type="application/javascript">
+    $(function(){
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            var parameters = new FormData(this);
+            submit_with_ajax(window.location.pathname, 'Notificación', 'Estas seguro de resetear tu contraseña?', parameters, function (){
+                Swal.fire({
+                    title: 'Notificación',
+                    text: 'Se ha enviado un correo, revisa tu cuenta de correo para resetear la contraseña',
+                    icon: 'success',
+                    timer: 5000,
+                    onClose: () => {
+                        location.href = '/';
+                    }
+                }).then((result) => {
+
+                });
+            })
+        })
+
+    });
+
+
+    !(function($) {
+        "use strict";
+        // Hero typed
+        if ($('.typed').length) {
+            var typed_strings = $(".typed").data('typed-items');
+            typed_strings = typed_strings.split(',')
+            new Typed('.typed', {
+                strings: typed_strings,
+                loop: true,
+                typeSpeed: 100,
+                backSpeed: 50,
+                backDelay: 2000
+            });
+        }
+
+    })(jQuery);
+</script>
+{% endblock %}
+
+</body>
+
+</html>

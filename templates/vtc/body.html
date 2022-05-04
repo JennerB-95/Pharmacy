@@ -1,0 +1,44 @@
+{% extends 'home.html' %}
+{% block body %}
+<body class="sidebar-mini">
+
+    <div class="container-scroller">
+                <!-- Header -->
+        {% include 'vtc/header.html' %}
+        <!-- Sidebar -->
+        <div class="container-fluid page-body-wrapper">
+
+        {% include 'vtc/sidebar.html' %}
+        <!-- Content -->
+        <div class="main-panel">
+        <div class="content-wrapper">
+
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+                {% include 'footer.html' %}
+            </div>
+        </div>
+        <!-- Footer -->
+    </div>
+    <!-- Block javascript -->
+    {% block javascript %}
+
+    {% endblock %}
+    <script>
+        {% if messages %}
+            var html = '<p>';
+            {% for message in messages %}
+                html += '{{ message }}<br>';
+            {% endfor %}
+            html += '</p>';
+            Swal.fire({
+                title: 'Error!',
+                html: html,
+                icon: 'error'
+            });
+        {% endif %}
+    </script>
+    </body>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% load static %}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+
+        {% if perms.erp.view_dashboard %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'erp:dashboard' %}">
+                <i class="fas fa-rocket menu-icon fa-2x"></i>
+                <span class="menu-title">Dashboard</span>
+            </a>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#inventory-ui" aria-expanded="false"
+                aria-controls="inventory-ui">
+                <i class="fas fa-cubes menu-icon fa-2x"></i>
+                <span class="menu-title">Inventario</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="inventory-ui">
+                <ul class="nav flex-column sub-menu">
+                    {% if perms.erp.view_category %}
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'erp:category_list' %}">Categorias</a></li>
+                    {% endif %}
+                    {% if perms.erp.view_laboratory %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'erp:laboratory_list' %}">Laboratorios</a>
+                    </li>
+                    {% endif %}
+                    {% if perms.erp.view_distribuidor %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'erp:distribuidor_list' %}">Distribuidores</a>
+                    </li>
+                    {% endif %}
+                    {% if perms.erp.view_unit %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'erp:unit_list' %}">Unidad de Medida</a></li>
+                    {% endif %}
+                    {% if perms.erp.view_product %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'erp:product_list' %}">Medicamentos</a></li>
+                    {% endif %}
+                    {% if perms.erp.view_shoppingenc %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'erp:shopping_list' %}">Compras</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ventas-ui" aria-expanded="false"
+                aria-controls="ventas-ui">
+                <i class="fas fa-truck menu-icon fa-2x"></i>
+                <span class="menu-title">Despacho</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ventas-ui">
+                <ul class="nav flex-column sub-menu">
+                    {% if perms.erp.view_client %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'erp:client_list' %}">Clientes</a></li>
+                    {% endif %}
+                    {% if perms.erp.view_sale %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'erp:sale_list' %}">Ventas</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#reportes-ui" aria-expanded="false"
+                aria-controls="reportes-ui">
+                <i class="fas fa-chart-pie menu-icon fa-2x"></i>
+                <span class="menu-title">Reportes</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="reportes-ui">
+                <ul class="nav flex-column sub-menu">
+                    {% if perms.view_salereport %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'sale_report' %}">Ventas</a></li>
+                    {% endif %}
+                    {% if perms.view_shoppingreport %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'shopping_report' %}">Compras</a></li>
+                    {% endif %}                    
+                    {% if perms.view_earningreport %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'earning_report' %}">Ganancias</a></li>
+                    {% endif %}                    
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#usuarios-ui" aria-expanded="false"
+                aria-controls="usuarios-ui">
+                <i class="fas fa-users menu-icon fa-2x"></i>
+                <span class="menu-title">Usuarios</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="usuarios-ui">
+                <ul class="nav flex-column sub-menu">
+                    {% if perms.user.view_user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user:user_list' %}">Usuarios</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+</nav>

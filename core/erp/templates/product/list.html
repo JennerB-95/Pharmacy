@@ -1,0 +1,149 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block style %}
+    <style>
+        select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]), .input-group-sm > select.asColorPicker-input:not([size]):not([multiple]), .dataTables_wrapper .input-group-sm > select:not([size]):not([multiple]), .jsgrid .jsgrid-table .jsgrid-filter-row .input-group-sm > select:not([size]):not([multiple]), .select2-container--default .input-group-sm > select.select2-selection--single:not([size]):not([multiple]), .select2-container--default .select2-selection--single .input-group-sm > select.select2-search__field:not([size]):not([multiple]), .input-group-sm > select.typeahead:not([size]):not([multiple]), .input-group-sm > select.tt-query:not([size]):not([multiple]), .input-group-sm > select.tt-hint:not([size]):not([multiple]), .input-group-sm > .input-group-prepend > select.input-group-text:not([size]):not([multiple]), .input-group-sm > .input-group-append > select.input-group-text:not([size]):not([multiple]), .input-group-sm > .input-group-prepend > select.btn:not([size]):not([multiple]), .ajax-upload-dragdrop .input-group-sm > .input-group-prepend > select.ajax-file-upload:not([size]):not([multiple]), .swal2-modal .swal2-buttonswrapper .input-group-sm > .input-group-prepend > select.swal2-styled:not([size]):not([multiple]), .input-group-sm > .input-group-append > select.btn:not([size]):not([multiple]), .ajax-upload-dragdrop .input-group-sm > .input-group-append > select.ajax-file-upload:not([size]):not([multiple]), .swal2-modal .swal2-buttonswrapper .input-group-sm > .input-group-append > select.swal2-styled:not([size]):not([multiple]) {
+            width: 50px;
+        }
+        .dataTables_wrapper .dataTable .btn, .dataTables_wrapper .dataTable .fc button, .fc .dataTables_wrapper .dataTable button, .dataTables_wrapper .dataTable .ajax-upload-dragdrop .ajax-file-upload, .ajax-upload-dragdrop .dataTables_wrapper .dataTable .ajax-file-upload, .dataTables_wrapper .dataTable .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .dataTables_wrapper .dataTable .swal2-styled, .dataTables_wrapper .dataTable .wizard > .actions a, .wizard > .actions .dataTables_wrapper .dataTable a {
+            padding: 12px 12px;
+            vertical-align: top;
+            margin-left: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+{% block head_list %}
+<script src="{% static 'medicaments/js/list_product.js' %}"></script>
+{% endblock %}
+
+
+{% block columns %}
+<tr>
+  <!-- <th scope="col" style="width: 5%;">No.</th> -->
+  <th scope="col" style="width: 10%;">Codigo de Barra</th>
+  <th scope="col" style="width: 20%;">Nombre</th>
+  <th scope="col" style="width: 10%;">Stock</th>
+  <th scope="col" style="width: 20%;">Vence Dias-Fecha</th>
+  <th scope="col" style="width: 10%;">Ubicacion</th>
+  <th scope="col" style="width: 10%;">Imagen</th>
+  <th scope="col" style="width: 10%;">Precio</th>
+  <th scope="col" style="width: 20%;">Opciones</th>
+</tr>
+{% endblock %}
+
+{% block javascript %}
+<div class="modal fade" id="myModalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary" id="exampleModalLongTitle">Detalle del Producto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="text-center pb-4">
+                      <img src="" id="image" name="image" width="300px" height="300px" class="rounded-circle mb-2" />
+                    </div>
+
+                  </div>
+                  <div class="col-lg-7">
+                    <div class="profile-feed">
+                      <div class="row">
+
+                        <div class="py-4">
+
+                          <!-- <div class="border-bottom text-center text-primary">
+                            <h4>Informacion</h4>
+                          </div> -->
+
+                          <p class="clearfix">
+                          <div class="row">
+                            <div class="col-lg-4 ">
+                              <span style="color:Tomato;" class="float-left mr-4 mb-2">Codigo de Barra</span>
+                            </div>
+                            <div class="col float-right mr-4 mb-2">
+                              <canvas id="barcode"></canvas>
+                            </div>
+                          </div>
+                          </p>
+                          <p class="clearfix">
+                          <div class="row">
+                            <div class="col-lg-4 ">
+                              <span style="color:Tomato;" class="float-left mr-4 mb-2">Nombre</span>
+                            </div>
+                            <div class="col float-right mr-4 mb-2">
+                              <label for="name"></label>
+                            </div>
+                          </div>
+                          </p>
+                          <p class="clearfix">
+                          <div class="row">
+                            <div class="col-lg-4 ">
+                              <span style="color:Tomato;" class="float-left mr-4 mb-2">Laboratorio</span>
+                            </div>
+                            <div class="col float-right mr-4 mb-2">
+                              <label for="lab"></label>
+                            </div>
+                          </div>
+                          </p>
+                          <p class="clearfix">
+                            <div class="row">
+                              <div class="col-lg-4 ">
+                                <span style="color:Tomato;" class="float-left mr-4 mb-2">Componente</span>
+                              </div>
+                              <div class="col float-right mr-4 mb-2">
+                                <label for="component"></label>
+                              </div>
+                            </div>
+                            </p>
+                          <p class="clearfix">
+                          <div class="row">
+                            <div class="col-lg-4 ">
+                              <span style="color:Tomato;" class="float-left mr-4 mb-2">Categoria</span>
+                            </div>
+                            <div class="col float-right mr-4 mb-2">
+                              <label for="cat"></label>
+                            </div>
+                          </div>
+                          </p>
+                          <p class="clearfix">
+                          <div class="row">
+                            <div class="col-lg-4 ">
+                              <span style="color:Tomato;" class="float-left mr-4 mb-2">Precio</span>
+                            </div>
+                            <div class="col float-right mr-4 mb-2">
+                              <label for="price_vnt"></label>
+                            </div>
+                          </div>
+                          </p>
+                          <p class="clearfix">
+                            <div class="row">
+                              <div class="col-lg-4 ">
+                                <span style="color:Tomato;" class="float-left mr-4 mb-2">Indicaciones</span>
+                              </div>
+                              <div class="col float-right mr-4 mb-2">
+                                <label for="indication"></label>
+                              </div>
+                            </div>
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

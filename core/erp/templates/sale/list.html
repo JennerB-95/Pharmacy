@@ -1,0 +1,65 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block style %}
+    <style>
+        select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]), .input-group-sm > select.asColorPicker-input:not([size]):not([multiple]), .dataTables_wrapper .input-group-sm > select:not([size]):not([multiple]), .jsgrid .jsgrid-table .jsgrid-filter-row .input-group-sm > select:not([size]):not([multiple]), .select2-container--default .input-group-sm > select.select2-selection--single:not([size]):not([multiple]), .select2-container--default .select2-selection--single .input-group-sm > select.select2-search__field:not([size]):not([multiple]), .input-group-sm > select.typeahead:not([size]):not([multiple]), .input-group-sm > select.tt-query:not([size]):not([multiple]), .input-group-sm > select.tt-hint:not([size]):not([multiple]), .input-group-sm > .input-group-prepend > select.input-group-text:not([size]):not([multiple]), .input-group-sm > .input-group-append > select.input-group-text:not([size]):not([multiple]), .input-group-sm > .input-group-prepend > select.btn:not([size]):not([multiple]), .ajax-upload-dragdrop .input-group-sm > .input-group-prepend > select.ajax-file-upload:not([size]):not([multiple]), .swal2-modal .swal2-buttonswrapper .input-group-sm > .input-group-prepend > select.swal2-styled:not([size]):not([multiple]), .input-group-sm > .input-group-append > select.btn:not([size]):not([multiple]), .ajax-upload-dragdrop .input-group-sm > .input-group-append > select.ajax-file-upload:not([size]):not([multiple]), .swal2-modal .swal2-buttonswrapper .input-group-sm > .input-group-append > select.swal2-styled:not([size]):not([multiple]) {
+            width: 50px;
+        }
+        .dataTables_wrapper .dataTable .btn, .dataTables_wrapper .dataTable .fc button, .fc .dataTables_wrapper .dataTable button, .dataTables_wrapper .dataTable .ajax-upload-dragdrop .ajax-file-upload, .ajax-upload-dragdrop .dataTables_wrapper .dataTable .ajax-file-upload, .dataTables_wrapper .dataTable .swal2-modal .swal2-buttonswrapper .swal2-styled, .swal2-modal .swal2-buttonswrapper .dataTables_wrapper .dataTable .swal2-styled, .dataTables_wrapper .dataTable .wizard > .actions a, .wizard > .actions .dataTables_wrapper .dataTable a {
+            padding: 12px 12px;
+            vertical-align: top;
+            margin-left: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+{% block head_list %}
+    <script src="{% static 'sales/js/list.js' %}"></script>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th scope="col">Nro</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Fecha de registro</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col">Total</th>
+        <th scope="col">Opciones</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+
+{% block javascript %}
+    <div class="modal fade" id="myModelDet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><b><i class="fas fa-shopping-cart"></i> Consulta de
+                        detalle de productos</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered" id="tblDet">
+                        <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
