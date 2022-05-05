@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Libs
     'rest_framework',
     'widget_tweaks',
+    'django_extensions',
     # Apps
     'core.erp',
     'core.homepage',
