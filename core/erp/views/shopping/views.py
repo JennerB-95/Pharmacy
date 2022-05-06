@@ -245,8 +245,8 @@ class ShoppingInvoicePdfView(View):
             template = get_template('shopping/invoice.html')
             context = {
                 'shopping': Shopping.objects.get(pk=self.kwargs['pk']),
-                'comp': {'name': 'ALL SAFE SECURITY & TECHNOLOGY S.A.', 'ruc': '30402185', 'address': 'Guatemala, Guatemala'},
-                'icon': '{}{}'.format(settings.MEDIA_URL, 'logo.png')
+                'comp': {'name': 'MEDICASA S.A.', 'ruc': '30402185', 'address': 'Guatemala, Guatemala'},
+                'icon': '{}{}'.format(settings.MEDIA_URL, 'logito.jpg')
             }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')

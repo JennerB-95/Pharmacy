@@ -36,7 +36,7 @@ class ProductListView(LoginRequiredMixin, ValidatePermissionRequiredMixin, ListV
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Listado de Productos'
+        context['title'] = 'Listado de Medicamentos'
         context['create_url'] = reverse_lazy('erp:product_create')
         context['list_url'] = reverse_lazy('erp:product_list')
         context['entity'] = 'Productos'
@@ -69,7 +69,7 @@ class ProductCreateView(LoginRequiredMixin, ValidatePermissionRequiredMixin, Cre
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Crear Producto'
+        context['title'] = 'Crear Medicamento'
         context['entity'] = 'Productos'
         context['list_url'] = self.success_url
         context['action'] = 'add'

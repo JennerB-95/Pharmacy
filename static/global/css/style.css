@@ -26799,7 +26799,7 @@ div.tagsinput span.tag a {
 }
 
 .content-wrapper {
-  background: #f1f2f7;
+  background: #fff !important;
   padding: 2.5rem 2.5rem;
   width: 100%;
   -webkit-flex-grow: 1;

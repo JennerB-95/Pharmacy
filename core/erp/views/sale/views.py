@@ -283,8 +283,8 @@ class SaleInvoicePdfView(View):
             template = get_template('sale/invoice.html')
             context = {
                 'sale': Sale.objects.get(pk=self.kwargs['pk']),
-                'comp': {'name': 'ALL SAFE SECURITY & TECHNOLOGY S.A.', 'ruc': '30402185', 'address': 'Guatemala, Guatemala'},
-                'icon': '{}{}'.format(settings.MEDIA_URL, 'logo.png')
+                'comp': {'name': '538207-7', 'ruc': '30402185', 'address': 'Guatemala, Guatemala'},
+                'icon': '{}{}'.format(settings.MEDIA_URL, 'logito.jpg')
             }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')

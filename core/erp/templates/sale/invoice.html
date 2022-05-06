@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <style>
     .img-invoice {
-        width: 50px;
+        width: 100px;
         text-align: center;
         margin: 0 auto;
     }
@@ -36,14 +36,14 @@
 <body>
 <img src="{{ icon }}" class="img-invoice">
 <p class="head">
-    {{ comp.name|upper }}<br>
-    {{ comp.ruc }}<br>
-    {{ comp.address|upper }}
+    NIT: {{ comp.name|upper }}<br>
+    {{ comp.address|upper }}<br>
+    Tel: {{ comp.ruc }}
 </p>
 <p>
     <b>FACTURA:</b> {{ sale.id }}<br>
     <b>FECHA DE VENTA:</b> {{ sale.date_joined }}<br>
-    <b>CLIENTE:</b> {{ sale.cli.names|upper }}<br>
+    <b>CLIENTE:</b> {{ sale.cli.names }}<br>
     <b>NIT:</b> {{ sale.cli.nit }}<br>
 </p>
 <table id="invoice">
@@ -53,7 +53,7 @@
         <th style="width: 40%;">PRODUCTO</th>
         <th style="width: 10%;">CANT</th>
         <th style="width: 15%;">P.UNITARIO</th>
-        <th style="width: 15%;">TOTAL</th>
+        <th style="width: 15%; text-align: right;">TOTAL</th>
     </tr>
     </thead>
     <tbody>
@@ -61,8 +61,8 @@
         <tr {% if forloop.first %}style="padding-top: 3px;" {% endif %}>
             <td>{{ d.prod.cat.name }}</td>
             <td>{{ d.prod.name }}</td>
-            <td class="text-center">{{ d.cant }}</td>
-            <td class="text-center">Q{{ d.price }}</td>
+            <td>{{ d.cant }}</td>
+            <td>Q{{ d.price }}</td>
             <td style="text-align: right;">Q{{ d.subtotal }}</td>
         </tr>
     {% endfor %}
@@ -86,7 +86,7 @@
         <th>****GRACIAS POR SU COMPRA****</th>
     </tr>
     <tr>
-        <th>NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES</th>
+        <th>*SUJETO A PAGOS TRIMESTRALES ISR</th>
     </tr>
     </thead>
 </table>

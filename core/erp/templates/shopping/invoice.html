@@ -61,18 +61,18 @@
             <td>{{ d.prod.cat.name }}</td>
             <td>{{ d.prod.name }}</td>
             <td class="text-center">{{ d.cant }}</td>
-            <td class="text-center">${{ d.price }}</td>
-            <td style="text-align: right;">${{ d.subtotal }}</td>
+            <td class="text-center">Q{{ d.price }}</td>
+            <td style="text-align: right;">Q{{ d.subtotal }}</td>
         </tr>
     {% endfor %}
     <tr style="border-top: 1px solid black; padding-top: 4px;">
         <td colspan="4"><b>SUBTOTAL</b></td>
-        <td style="text-align: right">${{ shopping.subtotal }}</td>
+        <td style="text-align: right">Q{{ shopping.subtotal }}</td>
     </tr>
 
     <tr style="padding-top: 0px;">
         <td colspan="4"><b>TOTAL A PAGAR</b></td>
-        <td style="text-align: right">${{ sale.total }}</td>
+        <td style="text-align: right">Q{{ sale.total }}</td>
     </tr>
     </tbody>
 </table>
